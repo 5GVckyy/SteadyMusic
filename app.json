@@ -1,7 +1,7 @@
 {
-  "name": "Yukki Music Bot",
+  "name": "SteadyMusic",
   "description": "A Telegram Music Bot with proper functions written in Python with Pyrogram and Py-Tgcalls.",
-  "repository": "https://github.com/NotReallyShikhar/YukkiMusicBot",
+  "repository": "https://github.com/5GVckyy/SteadyMusic",
   "logo": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg",
   "keywords": [
   "python3",
