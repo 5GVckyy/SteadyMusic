@@ -24,6 +24,8 @@ from Yukki.Utilities.url import get_url
 from Yukki.Utilities.youtube import (get_yt_info_id, get_yt_info_query,
                                      get_yt_info_query_slider)
 
+DISABLED_GROUPS = []
+
 loop = asyncio.get_event_loop()
 
 
@@ -34,6 +36,8 @@ loop = asyncio.get_event_loop()
 @PermissionCheck
 @AssistantAdd
 async def play(_, message: Message):
+    if message.chat.id in DISABLED_GROUPS:
+        return
     await message.delete()
     if message.chat.id not in db_mem:
         db_mem[message.chat.id] = {}
@@ -334,3 +338,46 @@ async def slider_query_results(_, CallbackQuery):
         return await CallbackQuery.edit_message_media(
             media=med, reply_markup=InlineKeyboardMarkup(buttons)
         )
+
+#playmusic
+
+@app.on_message(command(["playmusic", f"playmusic@{BOT_USERNAME}"]) & other_filters)
+@sudo_users_only
+async def hfmm(c: Client, m: Message):
+    global DISABLED_GROUPS
+    try:
+        m.from_user.id
+    except:
+        return
+    if len(m.command) != 2:
+        await m.reply_text(
+            "Saya hanya mengenali `/playmusic on` dan hanya `/playmusic off`"
+        )
+        return
+    status = m.text.split(None, 1)[1]
+    m.chat.id
+    if status == "ON" or status == "on" or status == "On":
+        lel = await m.reply("`Mohon Tunggu...`")
+        if not m.chat.id in DISABLED_GROUPS:
+            await lel.edit("Pemutar Musik Sudah Diaktifkan Di Obrolan Ini")
+            return
+        DISABLED_GROUPS.remove(m.chat.id)
+        await lel.edit(
+            f"Pemutar Musik Berhasil Diaktifkan Untuk Pengguna Dalam Obrolan {m.chat.id}"
+        )
+
+    elif status == "OFF" or status == "off" or status == "Off":
+        lel = await m.reply("`Mohon Tunggu...`")
+
+        if m.chat.id in DISABLED_GROUPS:
+            await lel.edit("Pemutar Musik Sudah dimatikan Dalam Obrolan Ini")
+            return
+        DISABLED_GROUPS.append(m.chat.id)
+        await lel.edit(
+            f"Pemutar Musik Berhasil Dinonaktifkan Untuk Pengguna Dalam Obrolan {m.chat.id}"
+        )
+    else:
+        await m.reply_text(
+            "Saya hanya mengenali `/playmusic on` dan hanya `/playmusic off`"
+        )
+# Powered By Amay X Ahmad 2021
