@@ -34,10 +34,10 @@ __HELP__ = """
 
 
 /settheme 
-- Set a theme for thumbnails.
+- Tetapkan tema untuk gambar thumb.
 
 /theme
-- Check Theme for your chat.
+- Periksa Tema untuk obrolan Anda.
 """
 
 
