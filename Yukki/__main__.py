@@ -210,8 +210,9 @@ async def start_command(_, message):
                 reply_markup=key,
             )
     out = private_panel()
-    return await message.reply_text(
-        home_text_pm,
+    return await app.send_message(
+        message.chat.id,
+        text=home_text_pm,
         reply_markup=InlineKeyboardMarkup(out[1]),
     )
 
