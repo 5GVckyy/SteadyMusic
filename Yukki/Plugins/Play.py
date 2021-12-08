@@ -342,7 +342,7 @@ async def slider_query_results(_, CallbackQuery):
 
 #playmusic
 
-@Client.on_message(command("playmusic") & filters.group & ~filters.edited & ~filters.via_bot & ~filters.forwarded)
+@app.on_message(filters.command("playmusic") & filters.group & ~filters.edited & ~filters.via_bot & ~filters.forwarded)
 async def hfmm(c: Client, m: Message):
     global DISABLED_GROUPS
     try:
