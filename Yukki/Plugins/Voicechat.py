@@ -25,14 +25,14 @@ __HELP__ = """
 Only for Sudo Users
 
 
-/joinassistant [Chat Username or Chat ID]
-- Join assistant to a group.
+/joinassistant [Nama Pengguna Obrolan atau ID Obrolan]
+- Bergabunglah dengan asisten ke grup.
 
-/leaveassistant [Chat Username or Chat ID]
-- Assistant will leave the particular group.
+/leaveassistant [Nama Pengguna Obrolan atau ID Obrolan]
+- Asisten akan meninggalkan grup tertentu.
 
-/leavebot [Chat Username or Chat ID]
-- Bot will leave the particular chat.
+/leavebot [Nama Pengguna Obrolan atau ID Obrolan]
+- Bot akan meninggalkan obrolan tertentu.
 
 """
 
