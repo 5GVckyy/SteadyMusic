@@ -121,9 +121,9 @@ async def initiate_bot():
 
 home_text_pm = f"""Hello ,
 My name is {BOT_NAME}.
-I'm Telegram Voice Chat Audio with some useful features.
+Saya Telegram Suara Obrolan Audio dengan beberapa fitur yang berguna.
 
-All commands can be used with: / """
+Semua perintah dapat digunakan dengan: / """
 
 
 @app.on_message(filters.command("help") & filters.private)
@@ -223,9 +223,9 @@ async def help_parser(name, keyboard=None):
     return (
         """Hello {first_name},
 
-Click on the buttons for more information.
+Klik tombol untuk informasi lebih lanjut.
 
-All commands can be used with: /
+Semua perintah dapat digunakan dengan: /
 """.format(
             first_name=name
         ),
@@ -249,9 +249,9 @@ async def help_button(client, query):
     create_match = re.match(r"help_create", query.data)
     top_text = f"""Hello {query.from_user.first_name},
 
-Click on the buttons for more information.
+Klik tombol untuk informasi lebih lanjut.
 
-All commands can be used with: /
+Semua perintah dapat digunakan dengan: /
  """
     if mod_match:
         module = mod_match.group(1)
