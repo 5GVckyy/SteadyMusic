@@ -1,6 +1,7 @@
 import asyncio
 import os
 import shutil
+import psutil
 
 from config import get_queue
 from pyrogram.types import InlineKeyboardMarkup
@@ -92,7 +93,9 @@ async def start_stream(
             videoid, CallbackQuery.from_user.id, duration_min, duration_min
         )
         await mystic.delete()
-        cap = f"🎥<b>__Playing:__ </b>[{title[:25]}](https://www.youtube.com/watch?v={videoid}) \n💡<b>__Info:__</b> [Get Additional Information](https://t.me/{BOT_USERNAME}?start=info_{videoid})\n👤**__Requested by:__** {CallbackQuery.from_user.mention}"
+        cpu_len = psutil.cpu_percent(interval=0.5)
+        ram = psutil.virtual_memory().percent
+        cap = f"💻 **RAM •┈➤** {ram}%\n💾 **CPU  • ╰┈➤** {cpu_len}% \n\n👤**__Requested by:__** {CallbackQuery.from_user.mention}"
         final_output = await CallbackQuery.message.reply_photo(
             photo=thumb,
             reply_markup=InlineKeyboardMarkup(buttons),
