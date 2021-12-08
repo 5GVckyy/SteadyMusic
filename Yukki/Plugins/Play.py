@@ -1,6 +1,7 @@
 import asyncio
 from os import path
 
+from pyrogram import Client
 from pyrogram import filters
 from pyrogram.types import (InlineKeyboardMarkup, InputMediaPhoto, Message,
                             Voice)
@@ -341,42 +342,42 @@ async def slider_query_results(_, CallbackQuery):
 
 #playmusic
 
-@app.on_message(filters.command("playmusic") & filters.private)
-async def hfmm(_, message):
+@Client.on_message(command("playmusic") & filters.group & ~filters.edited & ~filters.via_bot & ~filters.forwarded)
+async def hfmm(c: Client, m: Message):
     global DISABLED_GROUPS
     try:
-        message.from_user.id
+        m.from_user.id
     except:
         return
-    if len(message.command) != 2:
-        await message.reply_text(
+    if len(m.command) != 2:
+        await m.reply_text(
             "Saya hanya mengenali `/playmusic on` dan hanya `/playmusic off`"
         )
         return
-    status = message.text.split(None, 1)[1]
-    message.chat.id
+    status = m.text.split(None, 1)[1]
+    m.chat.id
     if status == "ON" or status == "on" or status == "On":
-        lel = await message.reply("`Mohon Tunggu...`")
-        if not message.chat.id in DISABLED_GROUPS:
+        lel = await m.reply("`Mohon Tunggu...`")
+        if not m.chat.id in DISABLED_GROUPS:
             await lel.edit("Pemutar Musik Sudah Diaktifkan Di Obrolan Ini")
             return
-        DISABLED_GROUPS.remove(message.chat.id)
+        DISABLED_GROUPS.remove(m.chat.id)
         await lel.edit(
             f"Pemutar Musik Berhasil Diaktifkan Untuk Pengguna Dalam Obrolan {m.chat.id}"
         )
 
     elif status == "OFF" or status == "off" or status == "Off":
-        lel = await message.reply("`Mohon Tunggu...`")
+        lel = await m.reply("`Mohon Tunggu...`")
 
-        if message.chat.id in DISABLED_GROUPS:
+        if m.chat.id in DISABLED_GROUPS:
             await lel.edit("Pemutar Musik Sudah dimatikan Dalam Obrolan Ini")
             return
-        DISABLED_GROUPS.append(message.chat.id)
+        DISABLED_GROUPS.append(m.chat.id)
         await lel.edit(
             f"Pemutar Musik Berhasil Dinonaktifkan Untuk Pengguna Dalam Obrolan {m.chat.id}"
         )
     else:
-        await message.reply_text(
+        await m.reply_text(
             "Saya hanya mengenali `/playmusic on` dan hanya `/playmusic off`"
         )
 # Powered By Amay X Ahmad 2021
