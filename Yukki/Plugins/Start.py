@@ -30,10 +30,10 @@ __HELP__ = """
 
 
 /start 
-- Start the Bot.
+- Mulai Bot.
 
 /help 
-- Get Commands Helper Menu.
+- Dapatkan Semua Perintah.
 
 """
 
