@@ -20,30 +20,30 @@ __HELP__ = """
 
 
 /sudolist 
-    Check the sudo user list of Bot. 
+    Periksa daftar pengguna sudo Bot. 
 
 
 **Note:**
-Only for Sudo Users. 
+Hanya untuk Pengguna Sudo 
 
 
-/addsudo [Username or Reply to a user]
-- To Add A User In Bot's Sudo Users.
+/addsudo [Nama pengguna atau Balas ke pengguna]
+- Untuk Menambahkan Pengguna Di Pengguna Sudo Bot.
 
-/delsudo [Username or Reply to a user]
-- To Remove A User from Bot's Sudo Users.
+/delsudo [Nama pengguna atau Balas ke pengguna]
+- Untuk Menghapus Pengguna dari Pengguna Sudo Bot.
 
 /restart 
-- Restart Bot [All downloads, cache, raw files will be cleared too]. 
+- Mulai ulang Bot [Semua unduhan, cache, file akan dihapus juga]. 
 
 /maintenance [enable / disable]
-- When enabled Bot goes under maintenance mode. No one can play Music now!
+- Saat diaktifkan, Bot berada dalam mode pemeliharaan. Tidak ada yang bisa memutar Musik sekarang!
 
 /update 
-- Fetch Updates from Server.
+- Ambil Pembaruan dari Server.
 
 /clean
-- Clean Temp Files and Logs.
+- Bersihkan File dan Log Temp.
 """
 # Add Sudo Users!
 
