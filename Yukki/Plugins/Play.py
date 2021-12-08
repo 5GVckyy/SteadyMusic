@@ -342,41 +342,41 @@ async def slider_query_results(_, CallbackQuery):
 #playmusic
 
 @app.on_message(filters.command("playmusic") & filters.private)
-async def hfmm(c: Client, m: Message):
+async def hfmm(_, message):
     global DISABLED_GROUPS
     try:
-        m.from_user.id
+        message.from_user.id
     except:
         return
-    if len(m.command) != 2:
-        await m.reply_text(
+    if len(message.command) != 2:
+        await message.reply_text(
             "Saya hanya mengenali `/playmusic on` dan hanya `/playmusic off`"
         )
         return
-    status = m.text.split(None, 1)[1]
-    m.chat.id
+    status = message.text.split(None, 1)[1]
+    message.chat.id
     if status == "ON" or status == "on" or status == "On":
-        lel = await m.reply("`Mohon Tunggu...`")
-        if not m.chat.id in DISABLED_GROUPS:
+        lel = await message.reply("`Mohon Tunggu...`")
+        if not message.chat.id in DISABLED_GROUPS:
             await lel.edit("Pemutar Musik Sudah Diaktifkan Di Obrolan Ini")
             return
-        DISABLED_GROUPS.remove(m.chat.id)
+        DISABLED_GROUPS.remove(message.chat.id)
         await lel.edit(
             f"Pemutar Musik Berhasil Diaktifkan Untuk Pengguna Dalam Obrolan {m.chat.id}"
         )
 
     elif status == "OFF" or status == "off" or status == "Off":
-        lel = await m.reply("`Mohon Tunggu...`")
+        lel = await message.reply("`Mohon Tunggu...`")
 
-        if m.chat.id in DISABLED_GROUPS:
+        if message.chat.id in DISABLED_GROUPS:
             await lel.edit("Pemutar Musik Sudah dimatikan Dalam Obrolan Ini")
             return
-        DISABLED_GROUPS.append(m.chat.id)
+        DISABLED_GROUPS.append(message.chat.id)
         await lel.edit(
             f"Pemutar Musik Berhasil Dinonaktifkan Untuk Pengguna Dalam Obrolan {m.chat.id}"
         )
     else:
-        await m.reply_text(
+        await message.reply_text(
             "Saya hanya mengenali `/playmusic on` dan hanya `/playmusic off`"
         )
 # Powered By Amay X Ahmad 2021
