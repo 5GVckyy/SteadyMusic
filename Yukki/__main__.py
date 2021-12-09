@@ -100,7 +100,7 @@ async def initiate_bot():
         await userbot.send_message(
             LOG_GROUP_ID,
             "<b>Congrats!! Steady Assistant Telah Menyala 🔥!</b>",
-        
+        )
     except Exception as e:
         print(
             "Assistant Account has failed to access the log Channel. Make sure that you have added your bot to your log channel and promoted as admin!"
