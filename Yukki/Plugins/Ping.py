@@ -32,7 +32,8 @@ Disk: {disk}%"""
 @app.on_message(filters.command(["ping", f"ping@{BOT_USERNAME}"]))
 async def ping(_, message):
     start = datetime.now()
-    response = await message.reply_text(f"Ping⚡")
+    response = await message.reply_text(
+            f"Ping⚡"
     uptime = await bot_sys_stats()
     end = datetime.now()
     resp = (end - start).microseconds / 1000
