@@ -38,7 +38,7 @@ def checkerCB(mystic):
         if await is_on_off(1):
             if int(CallbackQuery.message.chat.id) != int(LOG_GROUP_ID):
                 return await CallbackQuery.answer(
-                    "Bot is under Maintenance. Sorry for the inconvenience!",
+                    "Mohon maaf Bot Ada Kendala Saat/nMemutar Lagu Dikarenakan Steady/nMusic Sedang Dalam Perbaikan/n/nTerimakasih Telah Menggunakan Steady Music❤️",
                     show_alert=True,
                 )
         if await is_gbanned_user(CallbackQuery.from_user.id):
