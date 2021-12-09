@@ -22,13 +22,14 @@ __MODULE__ = "Global Ban"
 __HELP__ = """
 
 **Note:**
-Only for Sudo Users.
+Hanya untuk Pengguna Sudo
 
-/gban [Username or Reply to a user]
+/gban [Nama pengguna atau Balas ke pengguna]
 - Ban a user globally in Bot's Served Chats and prevents user from using bot commands.
 
-/ungban [Username or Reply to a user]
-- Remove a user from Bot's GBan List.
+
+/ungban [Nama pengguna atau Balas ke pengguna]
+- Hapus pengguna dari Daftar GBan Bot.
 """
 
 
