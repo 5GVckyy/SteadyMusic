@@ -35,26 +35,26 @@ __HELP__ = """
 
 
 /pause
-- Pause the playing music on voice chat.
+- Jeda musik yang diputar di obrolan suara.
 
 /resume
-- Resume the paused music on voice chat.
+- Lanjutkan musik yang dijeda di obrolan suara.
 
 /skip
-- Skip the current playing music on voice chat
+- Lewati musik yang sedang diputar di obrolan suara
 
 /end or /stop
-- Stop the playout.
+- Hentikan Music.
 
 /queue
-- Check queue list.
+- Periksa daftar antrian.
 
 
 **Note:**
-Only for Sudo Users
+Hanya untuk Pengguna Sudo
 
 /activevc
-- Check active voice chats on bot.
+- Periksa obrolan suara aktif di bot.
 
 """
 
