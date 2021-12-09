@@ -1,5 +1,5 @@
 <h2 align="center">
-   Other Deployment Methods
+   Ini Tombol Deploy Ya Kontol
 </h2>
 
 <p align="center">
