@@ -11,7 +11,7 @@ __MODULE__ = "Speedtest"
 __HELP__ = """
 
 /speedtest 
-- Check Server Latency and Speed.
+- Periksa Kecepatan Server.
 
 """
 
