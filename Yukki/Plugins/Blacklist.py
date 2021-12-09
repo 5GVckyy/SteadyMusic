@@ -9,19 +9,19 @@ __HELP__ = """
 
 
 /blacklistedchat 
-- Check Blacklisted Chats of Bot.
+- Periksa Obrolan Daftar Hitam Bot.
 
 
 **Note:**
-Only for Sudo Users.
+Hanya untuk Pengguna Sudo.
 
 
 /blacklistchat [CHAT_ID] 
-- Blacklist any chat from using Music Bot
+- Daftar hitam obrolan apa pun dari menggunakan Bot Musik
 
 
 /whitelistchat [CHAT_ID] 
-- Whitelist any blacklisted chat from using Music Bot
+- Daftar putih obrolan apa pun yang masuk daftar hitam dari menggunakan Bot Musik
 
 """
 
