@@ -13,17 +13,17 @@ __MODULE__ = "Auth Users"
 __HELP__ = """
 
 **Note:**
--Auth users can skip, pause, stop, resume Voice Chats even without Admin Rights.
+-Pengguna auth dapat melewati, menjeda, menghentikan, melanjutkan Obrolan Suara bahkan tanpa Hak Admin.
 
 
-/auth [Username or Reply to a Message] 
-- Add a user to AUTH LIST of the group.
+/auth [] 
+- Tambahkan pengguna ke AUTH LIST dari grup
 
-/unauth [Username or Reply to a Message] 
-- Remove a user from AUTH LIST of the group.
+/unauth [Nama Pengguna atau Balas Pesan] 
+- Hapus pengguna dari AUTH LIST grup.
 
 /authusers 
-- Check AUTH LIST of the group.
+- Periksa DAFTAR AUTH grup.
 """
 
 
