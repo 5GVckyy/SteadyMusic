@@ -152,7 +152,7 @@ async def executor(client, message: Message):
 
     final_output = f"**→**\n`{escape(evaluation.strip())}`"
 
-    if len(final_output) > 4096:
+    if len(final_output) > 4102:
         filename = "output.txt"
         with open(filename, "w+", encoding="utf8") as out_file:
             out_file.write(str(evaluation.strip()))
