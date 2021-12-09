@@ -27,7 +27,7 @@ HELPABLE = {}
 
 async def initiate_bot():
     with console.status(
-        "[magenta] Booting up The Yukki Music Bot...",
+        "[magenta] Booting up The Steady Music Bot...",
     ) as status:
         console.print("┌ [red]Clearing MongoDB cache...")
         try:
@@ -78,12 +78,12 @@ async def initiate_bot():
         await asyncio.sleep(2.4)
         await startup_delete_last(_____)
     console.print(
-        "[bold green]Congrats!! Yukki Music Bot has started successfully!\n"
+        "[bold green]Congrats!! Steady Music Bot Telah Menyala 🔥\n"
     )
     try:
         await app.send_message(
             LOG_GROUP_ID,
-            "<b>Congrats!! Music Bot has started successfully!</b>",
+            "<b>Congrats!! Steady Music Bot Telah Menyala 🔥!</b>",
         )
     except Exception as e:
         print(
@@ -99,8 +99,8 @@ async def initiate_bot():
     try:
         await userbot.send_message(
             LOG_GROUP_ID,
-            "<b>Congrats!! Assistant has started successfully!</b>",
-        )
+            "<b>Congrats!! Steady Assistant Telah Menyala 🔥!</b>",
+        
     except Exception as e:
         print(
             "Assistant Account has failed to access the log Channel. Make sure that you have added your bot to your log channel and promoted as admin!"
@@ -119,8 +119,8 @@ async def initiate_bot():
     console.print(f"\n[red]Stopping Bot")
 
 
-home_text_pm = f"""Hello ,
-My name is {BOT_NAME}.
+home_text_pm = f"""Halo ,
+Nama Saya {BOT_NAME}.
 Saya Telegram Suara Obrolan Audio dengan beberapa fitur yang berguna.
 
 Semua perintah dapat digunakan dengan: / """
