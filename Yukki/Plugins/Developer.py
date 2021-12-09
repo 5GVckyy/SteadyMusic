@@ -22,17 +22,17 @@ __MODULE__ = "Broadcast"
 __HELP__ = """
 
 **Note:**
-Only for Sudo Users.
+Hanya untuk Pengguna Sudo.
 
 
-/broadcast [Message or Reply to a Message] 
-- Broadcast any message to Bot's Served Chats.
+/broadcast [Pesan atau Balas Pesan] 
+- Siarkan pesan apa pun ke Obrolan yang Dilayani Bot.
 
-/broadcast_pin [Message or Reply to a Message] 
-- Broadcast any message to Bot's Served Chats with message getting Pinned in chat [Disabled Notifications].
+/broadcast_pin [Pesan atau Balas Pesan] 
+- Siarkan pesan apa pun ke Obrolan yang Dilayani Bot dengan pesan yang disematkan di obrolan [Pemberitahuan Dinonaktifkan].
 
-/broadcast_pin_loud [Message or Reply to a Message] 
-- Broadcast any message to Bot's Served Chats with message getting Pinned in chat [Enabled Notifications].
+/broadcast_pin_loud [Pesan atau Balas Pesan] 
+- Siarkan pesan apa pun ke Obrolan yang Dilayani Bot dengan pesan yang disematkan di obrolan [Pemberitahuan yang Diaktifkan].
 
 """
 
