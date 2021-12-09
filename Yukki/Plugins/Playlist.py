@@ -17,16 +17,16 @@ __MODULE__ = "Playlist"
 __HELP__ = """
 
 /playplaylist 
-- Start playing Your Saved Playlist.
+- Mulai mainkan Daftar Putar Tersimpan Anda.
 
 /playlist 
-- Check Your Saved Playlist On Servers.
+- Periksa Daftar Putar Anda Di Server.
 
 /delmyplaylist
-- Delete any saved music in your playlist
+- Hapus semua musik yang disimpan di daftar putar Anda
 
 /delgroupplaylist
-- Delete any saved music in your group's playlist [Requires Admin Rights.]
+- Hapus semua musik yang disimpan di daftar putar grup Anda [Memerlukan Hak Admin.]
 
 """
 
