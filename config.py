@@ -26,3 +26,7 @@ if str(getenv("SUPPORT_GROUP")).strip() == "":
     SUPPORT_GROUP = None
 else:
     SUPPORT_GROUP = str(getenv("SUPPORT_GROUP"))
+
+IMG_1 = getenv("IMG_1", "https://telegra.ph/file/5333139c799642aaf3bf8.jpg")
+IMG_2 = getenv("IMG_2", "https://telegra.ph/file/5333139c799642aaf3bf8.jpg")
+IMG_3 = getenv("IMG_3", "https://telegra.ph/file/5333139c799642aaf3bf8.jpg")
