@@ -27,7 +27,7 @@ from Yukki.Utilities.youtube import (get_yt_info_id, get_yt_info_query,
                                      get_yt_info_query_slider)
 
 from Yukki.Driver.amay import call_py, user
-from config import IMG_1, IMG_2
+from config import IMG_1, IMG_2, SUPPORT_CHANNEL, SUPPORT_GROUP
 from pyrogram.errors import UserAlreadyParticipant, UserNotParticipant
 from pytgcalls import StreamType
 from pytgcalls.types.input_stream import AudioVideoPiped
@@ -442,7 +442,10 @@ async def videoplay(c: Client, m: Message):
                 InlineKeyboardButton(text="⏹️", callback_data=f"stopcb"),
             ],
             [
-                InlineKeyboardButton(text="👑 Pemilik", url=f"https://t.me/{OWNER_NAME}"),
+                InlineKeyboardButton(text="💮 Saluran", url=f"{SUPPORT_CHANNEL}"),
+                InlineKeyboardButton(text="💮 Grup", url=f"{SUPPORT_GROUP}")
+            ],
+            [
                 InlineKeyboardButton(text="🗑 Tutup", callback_data=f"close")
             ],
         ]
