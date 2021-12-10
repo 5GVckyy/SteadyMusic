@@ -393,7 +393,7 @@ async def hfmm(c: Client, m: Message):
             "Saya hanya mengenali `/playmusic on` dan hanya `/playmusic off`"
         )
         
-  def ytsearch(query):
+def ytsearch(query):
     try:
         search = VideosSearch(query, limit=1)
         for r in search.result()["result"]:
