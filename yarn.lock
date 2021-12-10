@@ -13,7 +13,7 @@
   "author": "Vckyy",
   "license": "ISC",
   "engines":{
-      "node":"16.13.0"
+      "node":"17.0.0"
   },
   "bugs": {
     "url": "https://github.com/5GVckyy/SteadyMusic/issues"
