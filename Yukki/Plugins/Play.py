@@ -5,7 +5,7 @@ import psutil
 from pyrogram import Client
 from pyrogram import filters
 from pyrogram.types import (InlineKeyboardMarkup, InputMediaPhoto, Message,
-                            Voice)
+                            Voice, InlineKeyboardButton)
 from youtube_search import YoutubeSearch
 
 from Yukki import (BOT_USERNAME, DURATION_LIMIT, DURATION_LIMIT_MIN,
