@@ -17,7 +17,7 @@
 </p>
 
 <h2 align="center">
-   Ini Tombol Deploy Ya Kontol
+   Ini Tombol Deploy Ya Sayang ❤️
 </h2>
 
 <p align="center">
