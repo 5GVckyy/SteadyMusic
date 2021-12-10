@@ -12,8 +12,8 @@ bot = Client(
 
 user = Client(
     STRING,
-    api_id=API_ID,
-    api_hash=API_HASH,
+    API_ID,
+    API_HASH,
 )
 
 call_py = PyTgCalls(user)
