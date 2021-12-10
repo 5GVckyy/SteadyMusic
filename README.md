@@ -25,3 +25,10 @@
 <a href="https://dashboard.heroku.com/new?template=https://github.com/5GVckyy/SteadyMusic"><img src="https://img.shields.io/badge/Deploy%20To%20Heroku-blueviolet?style=for-the-badge&logo=heroku" width="250""/</a>  
 
 </p>
+
+
+## Credit 
+
+• [Vcky👩‍💻](https://github.com/5GVckyt)
+
+• [Ahmad👩‍💻](https://github.com/Ahmadsuherman)
