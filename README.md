@@ -2,7 +2,7 @@
   <img src="https://telegra.ph/file/add31c6018ba67309bd3b.jpg">
 </p>
 
-<h4><p align="center"> Steady Music </p></h4>
+<h4><p align="center"> Steady Musik Play Group </p></h4>
 
 <p align="center">Steady Music Project Adalah Bot Yang Dibuat Ataupun Dirancang Oleh Dua Orang Gabut Yang Memungkinkan Memutar Lagu Dalam Obrolan Suara Di Telegram, Kedua Orang Tersebut Bernama Vcky Dan Ahmad.</p>
 
