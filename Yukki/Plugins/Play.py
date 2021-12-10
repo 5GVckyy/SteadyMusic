@@ -37,7 +37,7 @@ from pytgcalls.types.input_stream.quality import (
     LowQualityVideo,
     MediumQualityVideo,
 )
-
+from youtubesearchpython import VideosSearch
 DISABLED_GROUPS = []
 
 loop = asyncio.get_event_loop()
