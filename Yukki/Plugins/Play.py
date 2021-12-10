@@ -1,5 +1,6 @@
 import asyncio
 from os import path
+import psutil
 
 from pyrogram import Client
 from pyrogram import filters
@@ -25,8 +26,8 @@ from Yukki.Utilities.url import get_url
 from Yukki.Utilities.youtube import (get_yt_info_id, get_yt_info_query,
                                      get_yt_info_query_slider)
 
-from config import IMG_1, IMG_2
 from Yukki.Driver.amay import call_py, user
+from config import IMG_1, IMG_2
 from pyrogram.errors import UserAlreadyParticipant, UserNotParticipant
 from pytgcalls import StreamType
 from pytgcalls.types.input_stream import AudioVideoPiped
