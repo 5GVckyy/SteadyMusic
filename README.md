@@ -16,15 +16,6 @@
 <a href="https://makeapullrequest.com"> <img src="https://img.shields.io/badge/PRs-Welcome-blue.svg?style=flat-round" alt="PRs" /> </a>
 </p>
 
-### Easiest Way To Deploy On Heroku 
-
-<p href="https://dashboard.heroku.com/new?template=https://github.com/5GVckyy/SteadyMusic"><img src="https://img.shields.io/badge/Deploy%20To%20Heroku-blueviolet?style=for-the-badge&logo=heroku" width="250""/</a>  </p>
-
-
-
-
-
-
 <h2 align="center">
    Ini Tombol Deploy Ya Kontol
 </h2>
