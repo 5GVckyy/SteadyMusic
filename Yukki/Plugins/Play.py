@@ -25,6 +25,17 @@ from Yukki.Utilities.url import get_url
 from Yukki.Utilities.youtube import (get_yt_info_id, get_yt_info_query,
                                      get_yt_info_query_slider)
 
+from Driver.amay import call_py, user
+from pyrogram.errors import UserAlreadyParticipant, UserNotParticipant
+from pytgcalls import StreamType
+from pytgcalls.types.input_stream import AudioVideoPiped
+from pytgcalls.types.input_stream.quality import (
+    HighQualityAudio,
+    HighQualityVideo,
+    LowQualityVideo,
+    MediumQualityVideo,
+)
+
 DISABLED_GROUPS = []
 
 loop = asyncio.get_event_loop()
@@ -380,4 +391,280 @@ async def hfmm(c: Client, m: Message):
         await m.reply_text(
             "Saya hanya mengenali `/playmusic on` dan hanya `/playmusic off`"
         )
+        
+  def ytsearch(query):
+    try:
+        search = VideosSearch(query, limit=1)
+        for r in search.result()["result"]:
+            ytid = r["id"]
+            if len(r["title"]) > 34:
+                songname = r["title"][:70]
+            else:
+                songname = r["title"]
+            url = f"https://www.youtube.com/watch?v={ytid}"
+        return [songname, url]
+    except Exception as e:
+        print(e)
+        return 0
+
+async def ytdl(link):
+    proc = await asyncio.create_subprocess_exec(
+        "yt-dlp",
+        "-g",
+        "-f",
+        "best[height<=?720][width<=?1280]",
+        f"{link}",
+        stdout=asyncio.subprocess.PIPE,
+        stderr=asyncio.subprocess.PIPE,
+    )
+    stdout, stderr = await proc.communicate()
+    if stdout:
+        return 1, stdout.decode().split("\n")[0]
+    else:
+        return 0, stderr.decode()
+
+@app.on_message(filters.command("videoplay") & filters.group & ~filters.edited & ~filters.via_bot & ~filters.forwarded)
+async def videoplay(c: Client, m: Message):
+
+    cpu_len = psutil.cpu_percent(interval=0.5)
+    ram = psutil.virtual_memory().percent
+
+    replied = m.reply_to_message
+    chat_id = m.chat.id
+    keyboard = InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton("⏸", callback_data="cbpause"),
+                InlineKeyboardButton("▶️", callback_data="cbresume"),
+                InlineKeyboardButton("🔇", callback_data="cbmute"),
+                InlineKeyboardButton("🔊", callback_data="cbunmute"),
+            ],
+            [
+                InlineKeyboardButton(text="📣 Saluran", url=f"https://t.me/{GROUP_SUPPORT}"),
+                InlineKeyboardButton(text="♛ Pemilik", url=f"https://t.me/{OWNER_NAME}"),
+            ],
+            [
+                InlineKeyboardButton(text="🗑 Tutup", callback_data="cls"),
+            ],
+        ]
+    )
+    if m.sender_chat:
+        return await m.reply_text("Anda adalah __Admin Anonim__ !\n\n» kembali ke akun pengguna dari hak admin.")
+    try:
+        aing = await c.get_me()
+    except Exception as e:
+        return await m.reply_text(f"error:\n\n{e}")
+    a = await c.get_chat_member(chat_id, aing.id)
+    if a.status != "administrator":
+        await m.reply_text(
+            f"💡 Untuk menggunakan saya, saya harus menjadi **Administrator** dengan **izin** berikut:\n\n» ❌ __Delete messages__\n» ❌ __Restrict users__\n» ❌ __Add users__\n» ❌ __Manage video chat__\n\nData **diperbarui** secara otomatis setelah Anda **mempromosikan saya**"
+        )
+        return
+    if not a.can_manage_voice_chats:
+        await m.reply_text(
+            "Tidak ada izin yang diperlukan:" + "\n\n» ❌ __Manage video chat__"
+        )
+        return
+    if not a.can_delete_messages:
+        await m.reply_text(
+            "Tidak ada izin yang diperlukan:" + "\n\n» ❌ __Delete messages__"
+        )
+        return
+    if not a.can_invite_users:
+        await m.reply_text("Tidak ada izin yang diperlukan:" + "\n\n» ❌ __Add users__")
+        return
+    if not a.can_restrict_members:
+        await m.reply_text("Tidak ada izin yang diperlukan:" + "\n\n» ❌ __Restrict users__")
+        return
+    try:
+        ubot = await user.get_me()
+        b = await c.get_chat_member(chat_id, ubot.id)
+        if b.status == "kicked":
+            await m.reply_text(
+                f"@{ASSISTANT_NAME} **diblokir di grup** {m.chat.title}\n\n» **batalkan pemblokiran robot pengguna terlebih dahulu jika Anda ingin menggunakan bot ini.**"
+            )
+            return
+    except UserNotParticipant:
+        if m.chat.username:
+            try:
+                await user.join_chat(m.chat.username)
+            except Exception as e:
+                await m.reply_text(f"❌ **Pengguna robot gagal bergabung**\n\n**Alasan**: `{e}`")
+                return
+        else:
+            try:
+                pope = await c.export_chat_invite_link(chat_id)
+                pepo = await c.revoke_chat_invite_link(chat_id, pope)
+                await user.join_chat(pepo.invite_link)
+            except UserAlreadyParticipant:
+                pass
+            except Exception as e:
+                return await m.reply_text(
+                    f"❌ **Pengguna robot gagal bergabung**\n\n**Alasan**: `{e}`"
+                )
+
+    if replied:
+        if replied.video or replied.document:
+            loser = await replied.reply("📥 **Mengunduh video...**")
+            dl = await replied.download()
+            link = replied.link
+            if len(m.command) < 2:
+                Q = 720
+            else:
+                pq = m.text.split(None, 1)[1]
+                if pq == "720" or "480" or "360":
+                    Q = int(pq)
+                else:
+                    Q = 720
+                    await loser.edit(
+                        "» __hanya 720, 480, 360 yang diizinkan__ \n💡 **sekarang streaming video dalam 720p**"
+                    )
+            try:
+                if replied.video:
+                    songname = replied.video.file_name[:70]
+                elif replied.document:
+                    songname = replied.document.file_name[:70]
+            except BaseException:
+                songname = "Video"
+
+            if chat_id in QUEUE:
+                pos = add_to_queue(chat_id, songname, dl, link, "Video", Q)
+                await loser.delete()
+                requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
+                await m.reply_photo(
+                    photo=f"{IMG_1}",
+                    caption=f"💡 **Lacak ditambahkan ke antrian**\n\n🏷 **Nama:** [{songname}]({link})\n💭 **Chat:** `{chat_id}`\n🎧 **Permintaan Oleh:** {requester}\n🔢 **Diposisi »** `{pos}`",
+                    reply_markup=keyboard,
+                )
+            else:
+                if Q == 720:
+                    amaze = HighQualityVideo()
+                elif Q == 480:
+                    amaze = MediumQualityVideo()
+                elif Q == 360:
+                    amaze = LowQualityVideo()
+                await call_py.join_group_call(
+                    chat_id,
+                    AudioVideoPiped(
+                        dl,
+                        HighQualityAudio(),
+                        amaze,
+                    ),
+                    stream_type=StreamType().local_stream,
+                )
+                add_to_queue(chat_id, songname, dl, link, "Video", Q)
+                await loser.delete()
+                requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
+                await m.reply_photo(
+                    photo=f"{IMG_2}",
+                    caption=f"👩‍💻 **Permintaan Oleh: ** {requester}\n\n💻 **RAM •┈➤** {ram}%\n💾 **CPU  • ╰┈➤** {cpu_len}%",
+                    reply_markup=keyboard,
+                )
+        else:
+            if len(m.command) < 2:
+                await m.reply(
+                    "» **Tidak dapat menemukan video lagu**, berikan nama video lagu yang benar. Contoh `/videoplay` [nama lagu]"
+                )
+            else:
+                loser = await m.reply("🔎 **Mencari...**")
+                query = m.text.split(None, 1)[1]
+                search = ytsearch(query)
+                Q = 720
+                amaze = HighQualityVideo()
+                if search == 0:
+                    await loser.edit("❌ **Tidak ada hasil yang ditemukan.**")
+                else:
+                    songname = search[0]
+                    url = search[1]
+                    amay, ytlink = await ytdl(url)
+                    if amay == 0:
+                        await loser.edit(f"❌ yt-dli masalah terdeteksi\n\n» `{ytlink}`")
+                    else:
+                        if chat_id in QUEUE:
+                            pos = add_to_queue(
+                                chat_id, songname, ytlink, url, "Video", Q
+                            )
+                            await loser.delete()
+                            requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
+                            await m.reply_photo(
+                                photo=f"{IMG_1}",
+                                caption=f"💡 **Lacak ditambahkan ke antrian**\n\n🏷 **Nama:** [{songname}]({url})\n💭 **Chat:** `{chat_id}`\n🎧 **Permintaan Oleh:** {requester}\n🔢 **Diposisi »** `{pos}`",
+                                reply_markup=keyboard,
+                            )
+                        else:
+                            try:
+                                await call_py.join_group_call(
+                                    chat_id,
+                                    AudioVideoPiped(
+                                        ytlink,
+                                        HighQualityAudio(),
+                                        amaze,
+                                    ),
+                                    stream_type=StreamType().local_stream,
+                                )
+                                add_to_queue(chat_id, songname, ytlink, url, "Video", Q)
+                                await loser.delete()
+                                requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
+                                await m.reply_photo(
+                                    photo=f"{IMG_2}",
+                                    caption=f"👩‍💻 **Permintaan Oleh: ** {requester}\n\n💻 **RAM •┈➤** {ram}%\n💾 **CPU  • ╰┈➤** {cpu_len}%",
+                                    reply_markup=keyboard,
+                                )
+                            except Exception as ep:
+                                await loser.delete()
+                                await m.reply_text(f"🚫 Terjadi Kesalahan: `{ep}`")
+
+    else:
+        if len(m.command) < 2:
+            await m.reply(
+                "» **Tidak dapat menemukan video lagu**, berikan nama video lagu yang benar. Contoh `/videoplay` [nama lagu]"
+            )
+        else:
+            loser = await m.reply("🔎 **Mencari...**")
+            query = m.text.split(None, 1)[1]
+            search = ytsearch(query)
+            Q = 720
+            amaze = HighQualityVideo()
+            if search == 0:
+                await loser.edit("❌ **Tidak ada hasil yang ditemukan.**")
+            else:
+                songname = search[0]
+                url = search[1]
+                amay, ytlink = await ytdl(url)
+                if amay == 0:
+                    await loser.edit(f"❌ yt-dl masalah terdeteksi\n\n» `{ytlink}`")
+                else:
+                    if chat_id in QUEUE:
+                        pos = add_to_queue(chat_id, songname, ytlink, url, "Video", Q)
+                        await loser.delete()
+                        requester = (
+                            f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
+                        )
+                        await m.reply_photo(
+                            photo=f"{IMG_1}",
+                            caption=f"💡 **Lacak ditambahkan ke antrian**\n\n🏷 **Nama:** [{songname}]({url})\n💭 **Chat:** `{chat_id}`\n🎧 **Permintaan Oleh:** {requester}\n🔢 **Diposisi »** `{pos}`",
+                            reply_markup=keyboard,
+                        )
+                    else:
+                        try:
+                            await call_py.join_group_call(
+                                chat_id,
+                                AudioVideoPiped(
+                                    ytlink,
+                                    HighQualityAudio(),
+                                    amaze,
+                                ),
+                                stream_type=StreamType().local_stream,
+                            )
+                            add_to_queue(chat_id, songname, ytlink, url, "Video", Q)
+                            await loser.delete()
+                            requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
+                            await m.reply_photo(
+                                photo=f"{IMG_2}",
+                                caption=f"👩‍💻 **Permintaan Oleh: ** {requester}\n\n💻 **RAM •┈➤** {ram}%\n💾 **CPU  • ╰┈➤** {cpu_len}%",
+                                reply_markup=keyboard,
+                            )
+                        except Exception as ep:
+                            await loser.delete()
+                            await m.reply_text(f"🚫 Terjadi Kesalahan: `{ep}`")
 # Powered By Amay X Ahmad 2021
