@@ -4,7 +4,7 @@
 
 <h4><p align="center"> Steady Music </p></h4>
 
-<p align="center">Steady Music is a Music bot running on python3 with lupa and have a lot features.</p>
+<p align="center">Steady Music Project Adalah Bot Yang Dibuat Ataupun Dirancang Oleh Dua Orang Gabut Yang Memungkinkan Memutar Lagu Dalam Obrolan Suara Di Telegram Kedua Orang Tersebut Bernama Vcky Dan Ahmad.</p>
 
 <p align="center">
 <a href="https://python-telegram-bot.org"> <img src="https://img.shields.io/badge/PTB-13.7-white?&style=flat-round&logo=github" alt="Python Telegram Bot" /> </a>
