@@ -436,17 +436,14 @@ async def videoplay(c: Client, m: Message):
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("⏸", callback_data="cbpause"),
-                InlineKeyboardButton("▶️", callback_data="cbresume"),
-                InlineKeyboardButton("🔇", callback_data="cbmute"),
-                InlineKeyboardButton("🔊", callback_data="cbunmute"),
+                InlineKeyboardButton(text="▶️", callback_data=f"resumecb"),
+                InlineKeyboardButton(text="⏸️", callback_data=f"pausecb"),
+                InlineKeyboardButton(text="⏭️", callback_data=f"skipcb"),
+                InlineKeyboardButton(text="⏹️", callback_data=f"stopcb"),
             ],
             [
-                InlineKeyboardButton(text="📣 Saluran", url=f"https://t.me/{GROUP_SUPPORT}"),
-                InlineKeyboardButton(text="♛ Pemilik", url=f"https://t.me/{OWNER_NAME}"),
-            ],
-            [
-                InlineKeyboardButton(text="🗑 Tutup", callback_data="cls"),
+                InlineKeyboardButton(text="👑 Pemilik", url=f"https://t.me/{OWNER_NAME}"),
+                InlineKeyboardButton(text="🗑 Tutup", callback_data=f"close")
             ],
         ]
     )
