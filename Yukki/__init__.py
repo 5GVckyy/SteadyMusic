@@ -27,7 +27,6 @@ MOD_NOLOAD = []
 MONGODB_CLI = Bot(mango)
 db = MONGODB_CLI.Yukki
 
-
 ### Boot Time
 boottime = time.time()
 
@@ -88,7 +87,6 @@ async def initiate_bot():
         if "search" not in listdir():
             mkdir("search")
         console.print("└ [green]Directories Updated!")
-
         await asyncio.sleep(0.9)
         ___ = await startup_edit_last(all_over, "Refurbishing Necessary Data...")
         console.print("\n┌ [red]Refurbishing Necessities...")
