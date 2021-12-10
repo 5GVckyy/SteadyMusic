@@ -29,6 +29,6 @@
 
 ## Credit 
 
-• [Vcky👩‍💻](https://github.com/5GVckyt)
+• [Vcky👩‍💻](https://github.com/5GVckyy)
 
 • [Ahmad👩‍💻](https://github.com/Ahmadsuherman)
