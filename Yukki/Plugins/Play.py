@@ -26,7 +26,7 @@ from Yukki.Utilities.youtube import (get_yt_info_id, get_yt_info_query,
                                      get_yt_info_query_slider)
 
 from config import IMG_1, IMG_2
-from Driver.amay import call_py, user
+from Yukki.Driver.amay import call_py, user
 from pyrogram.errors import UserAlreadyParticipant, UserNotParticipant
 from pytgcalls import StreamType
 from pytgcalls.types.input_stream import AudioVideoPiped
