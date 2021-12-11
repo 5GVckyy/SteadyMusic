@@ -617,7 +617,7 @@ async def videoplay(c: Client, m: Message):
                                 )
                             except Exception as ep:
                                 await loser.delete()
-                                await m.reply_text(f"🚫 Terjadi Kesalahan: `{ep}`")
+                                await m.reply_text(f"🚫 Terjadi Kesalahan: `{ep}`, Node Js gada ya anjinc")
 
     else:
         if len(m.command) < 2:
@@ -671,5 +671,5 @@ async def videoplay(c: Client, m: Message):
                             )
                         except Exception as ep:
                             await loser.delete()
-                            await m.reply_text(f"🚫 Terjadi Kesalahan: `{ep}`")
+                            await m.reply_text(f"🚫 Terjadi Kesalahan: `{ep}, p")
 # Powered By Amay X Ahmad 2021
