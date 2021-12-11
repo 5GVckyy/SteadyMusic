@@ -3,11 +3,10 @@ from pyrogram import Client
 from pytgcalls import PyTgCalls
 
 bot = Client(
-    ":memory:",
+    "YukkiMusicBot",
     API_ID,
     API_HASH,
-    BOT_TOKEN,
-    plugins={"root": "Plugins"},
+    bot_token=BOT_TOKEN,
 )
 
 user = Client(
