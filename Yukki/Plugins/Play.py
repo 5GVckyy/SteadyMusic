@@ -28,7 +28,7 @@ from Yukki.Utilities.youtube import (get_yt_info_id, get_yt_info_query,
 
 from Yukki.Core.Clients.cli import app, userbot
 from Yukki.Driver.queues import QUEUE, add_to_queue
-from Yukki.Driver.amay import call_py, user, app
+from Yukki.Driver.amay import call_py, user, bot
 from config import IMG_1, IMG_2, SUPPORT_CHANNEL, SUPPORT_GROUP
 from pyrogram.errors import UserAlreadyParticipant, UserNotParticipant
 from pytgcalls import StreamType
