@@ -671,5 +671,5 @@ async def videoplay(c: Client, m: Message):
                             )
                         except Exception as ep:
                             await loser.delete()
-                            await m.reply_text(f"🚫 Terjadi Kesalahan: `{ep}`, \n requester")
+                            await m.reply_text(f"🚫 Terjadi Kesalahan: `{ep}`, \n Error By {requester}")
 # Powered By Amay X Ahmad 2021
