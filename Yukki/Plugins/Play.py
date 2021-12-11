@@ -27,7 +27,7 @@ from Yukki.Utilities.youtube import (get_yt_info_id, get_yt_info_query,
                                      get_yt_info_query_slider)
 
 from Yukki.Driver.queues import QUEUE, add_to_queue
-from Yukki.Driver.amay import call_py, user
+from Yukki.Driver.amay import call_py, user, bot
 from config import IMG_1, IMG_2, SUPPORT_CHANNEL, SUPPORT_GROUP
 from pyrogram.errors import UserAlreadyParticipant, UserNotParticipant
 from pytgcalls import StreamType
@@ -480,7 +480,7 @@ async def videoplay(c: Client, m: Message):
         await m.reply_text("Tidak ada izin yang diperlukan:" + "\n\n» ❌ __Restrict users__")
         return
     try:
-        ubot = await user.get_me()
+        ubot = await bot.get_me()
         b = await c.get_chat_member(chat_id, ubot.id)
         if b.status == "kicked":
             await m.reply_text(
