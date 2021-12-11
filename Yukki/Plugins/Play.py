@@ -2,6 +2,7 @@ import asyncio
 from os import path
 import psutil
 
+from logging import DEBUG, INFO, basicConfig, getLogger
 from pyrogram import Client
 from pyrogram import filters
 from pyrogram.types import (InlineKeyboardMarkup, InputMediaPhoto, Message,
@@ -43,7 +44,7 @@ from youtubesearchpython import VideosSearch
 DISABLED_GROUPS = []
 
 loop = asyncio.get_event_loop()
-
+LOGS = getLogger(__name__)
 
 @app.on_message(
     filters.command(["play", f"play@{BOT_USERNAME}"]) & filters.group
@@ -429,7 +430,7 @@ async def ytdl(link):
 
 @app.on_message(filters.command("videoplay") & filters.group & ~filters.edited & ~filters.via_bot & ~filters.forwarded)
 async def videoplay(c: Client, m: Message):
-
+     
     cpu_len = psutil.cpu_percent(interval=0.5)
     ram = psutil.virtual_memory().percent
 
