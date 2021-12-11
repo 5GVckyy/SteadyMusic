@@ -27,7 +27,7 @@ HELPABLE = {}
 
 async def initiate_bot():
     with console.status(
-        "[magenta] Booting up The Steady Music Bot...",
+        "[magenta] Booting up The Yukki Music Bot...",
     ) as status:
         console.print("┌ [red]Clearing MongoDB cache...")
         try:
@@ -78,12 +78,12 @@ async def initiate_bot():
         await asyncio.sleep(2.4)
         await startup_delete_last(_____)
     console.print(
-        "[bold green]Congrats!! Steady Music Bot Telah Menyala 🔥\n"
+        "[bold green]Congrats!! Yukki Music Bot has started successfully!\n"
     )
     try:
         await app.send_message(
             LOG_GROUP_ID,
-            "<b>Congrats!! Steady Music Bot Telah Menyala 🔥!</b>",
+            "<b>Congrats!! Music Bot has started successfully!</b>",
         )
     except Exception as e:
         print(
@@ -99,7 +99,7 @@ async def initiate_bot():
     try:
         await userbot.send_message(
             LOG_GROUP_ID,
-            "<b>Congrats!! Steady Assistant Telah Menyala 🔥!</b>",
+            "<b>Congrats!! Assistant has started successfully!</b>",
         )
     except Exception as e:
         print(
@@ -119,11 +119,11 @@ async def initiate_bot():
     console.print(f"\n[red]Stopping Bot")
 
 
-home_text_pm = f"""Halo ,
-Nama Saya {BOT_NAME}.
-Saya Telegram Suara Obrolan Audio dengan beberapa fitur yang berguna.
+home_text_pm = f"""Hello ,
+My name is {BOT_NAME}.
+I'm Telegram Voice Chat Audio with some useful features.
 
-Semua perintah dapat digunakan dengan: / """
+All commands can be used with: / """
 
 
 @app.on_message(filters.command("help") & filters.private)
@@ -210,7 +210,6 @@ async def start_command(_, message):
                 reply_markup=key,
             )
     out = private_panel()
-     
     return await message.reply_text(
         home_text_pm,
         reply_markup=InlineKeyboardMarkup(out[1]),
@@ -223,9 +222,9 @@ async def help_parser(name, keyboard=None):
     return (
         """Hello {first_name},
 
-Klik tombol untuk informasi lebih lanjut.
+Click on the buttons for more information.
 
-Semua perintah dapat digunakan dengan: /
+All commands can be used with: /
 """.format(
             first_name=name
         ),
@@ -249,9 +248,9 @@ async def help_button(client, query):
     create_match = re.match(r"help_create", query.data)
     top_text = f"""Hello {query.from_user.first_name},
 
-Klik tombol untuk informasi lebih lanjut.
+Click on the buttons for more information.
 
-Semua perintah dapat digunakan dengan: /
+All commands can be used with: /
  """
     if mod_match:
         module = mod_match.group(1)
