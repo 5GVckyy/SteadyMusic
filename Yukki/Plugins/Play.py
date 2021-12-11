@@ -651,6 +651,7 @@ async def videoplay(c: Client, m: Message):
                             reply_markup=keyboard,
                         )
                     else:
+                        requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                         try:
                             await call_py.join_group_call(
                                 chat_id,
