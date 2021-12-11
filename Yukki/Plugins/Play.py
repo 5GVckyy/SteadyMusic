@@ -2,7 +2,6 @@ import asyncio
 from os import path
 import psutil
 
-from logging import DEBUG, INFO, basicConfig, getLogger
 from pyrogram import Client
 from pyrogram import filters
 from pyrogram.types import (InlineKeyboardMarkup, InputMediaPhoto, Message,
@@ -44,7 +43,6 @@ from youtubesearchpython import VideosSearch
 DISABLED_GROUPS = []
 
 loop = asyncio.get_event_loop()
-LOGS = getLogger(__name__)
 
 @app.on_message(
     filters.command(["play", f"play@{BOT_USERNAME}"]) & filters.group
@@ -576,9 +574,7 @@ async def videoplay(c: Client, m: Message):
                 search = ytsearch(query)
                 Q = 720
                 amaze = HighQualityVideo()
-                LOGS.info(
-                    f"Muncul atuh {search}"
-                )
+
                 if search == 0:
                     await loser.edit("❌ **Tidak ada hasil yang ditemukan.**")
                 else:
@@ -592,9 +588,7 @@ async def videoplay(c: Client, m: Message):
                             pos = add_to_queue(
                                 chat_id, songname, ytlink, url, "Video", Q
                             )
-                            LOGS.info(
-                                f"Ditambahkan ke antrian"
-                            )
+
                             await loser.delete()
                             requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                             await m.reply_photo(
@@ -603,13 +597,7 @@ async def videoplay(c: Client, m: Message):
                                 reply_markup=keyboard,
                             )
                         else:
-                            LOGS.info(
-                                f"Kesini gak ya"
-                            )
                             try:
-                                LOGS.info(
-                                    f"kesini dulu ga ya"
-                                )
                                 await call_py.join_group_call(
                                     chat_id,
                                     AudioVideoPiped(
