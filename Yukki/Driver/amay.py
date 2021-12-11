@@ -6,7 +6,7 @@ bot = Client(
     ":memory:",
     API_ID,
     API_HASH,
-    bot_token=BOT_TOKEN,
+    BOT_TOKEN,
     plugins={"root": "Plugins"},
 )
 
