@@ -2,7 +2,7 @@ import asyncio
 from os import path
 import psutil
 
-from pyrogram import Client.cli
+from pyrogram import Client.Clients.cli
 from pyrogram import filters
 from pyrogram.types import (InlineKeyboardMarkup, InputMediaPhoto, Message,
                             Voice, InlineKeyboardButton)
