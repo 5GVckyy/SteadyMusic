@@ -19,6 +19,8 @@ from Yukki.Database import get_active_chats, get_sudoers, remove_active_chat
 from Yukki.Inline import private_panel
 from Yukki.Plugins import ALL_MODULES
 from Yukki.Utilities.inline import paginate_modules
+from Yukki.Driver.amay import call_py, bot
+from pytgcalls import idle
 
 loop = asyncio.get_event_loop()
 console = Console()
@@ -26,8 +28,16 @@ HELPABLE = {}
 
 
 async def initiate_bot():
+    print("[INFO]: STARTING BOT CLIENT")
+    await bot.start()
+    print("[INFO]: STARTING PYTGCALLS CLIENT")
+    await call_py.start()
+    await idle()
+    print("[INFO]: STOPPING BOT")
+    await bot.stop()
+    
     with console.status(
-        "[magenta] Booting up The Yukki Music Bot...",
+        "[magenta] Booting up The Steady Music Bot...",
     ) as status:
         console.print("┌ [red]Clearing MongoDB cache...")
         try:
