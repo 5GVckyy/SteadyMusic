@@ -480,7 +480,7 @@ async def videoplay(c: Client, m: Message):
         await m.reply_text("Tidak ada izin yang diperlukan:" + "\n\n» ❌ __Restrict users__")
         return
     try:
-        ubot = await bot.get_me()
+        ubot = await call_py.get_me()
         b = await c.get_chat_member(chat_id, ubot.id)
         if b.status == "kicked":
             await m.reply_text(
