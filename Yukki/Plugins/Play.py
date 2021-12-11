@@ -669,7 +669,7 @@ async def videoplay(c: Client, m: Message):
                                 caption=f"👩‍💻 **Permintaan Oleh: ** {requester}\n\n💻 **RAM •┈➤** {ram}%\n💾 **CPU  • ╰┈➤** {cpu_len}%",
                                 reply_markup=keyboard,
                             )
-#                         except Exception as ep:
-#                             await loser.delete()
-#                             await m.reply_text(f"🚫 Terjadi Kesalahan: `{ep}, p")
+                        except Exception as ep:
+                            await loser.delete()
+                            await m.reply_text(f"🚫 Terjadi Kesalahan: `{ep}`, \n requester")
 # Powered By Amay X Ahmad 2021
