@@ -10,8 +10,9 @@ from rich.console import Console
 from rich.table import Table
 from youtubesearchpython import VideosSearch
 
+from pytgcalls import idle
 from Yukki import (ASSID, ASSMENTION, ASSNAME, ASSUSERNAME, BOT_ID, BOT_NAME,
-                   BOT_USERNAME, SUDOERS, app, db, userbot)
+                   BOT_USERNAME, SUDOERS, app, db, userbot, call_py)
 from Yukki.Core.Logger.Log import (startup_delete_last, startup_edit_last,
                                    startup_send_new)
 from Yukki.Core.PyTgCalls.Yukki import run
@@ -115,6 +116,10 @@ async def initiate_bot():
     console.print(f"├[green] ID :- {BOT_ID}!")
     console.print(f"├[red] Assistant Started as {ASSNAME}!")
     console.print(f"└[green] ID :- {ASSID}!")
+    
+    await call_py.start()
+    await idle()
+    
     await run()
     console.print(f"\n[red]Stopping Bot")
 
