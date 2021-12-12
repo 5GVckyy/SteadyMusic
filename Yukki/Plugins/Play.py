@@ -673,4 +673,20 @@ async def videoplay(c: Client, m: Message):
                         except Exception as ep:
                             await loser.delete()
                             await m.reply_text(f"🚫 Terjadi Kesalahan: `{ep}`, \n Error By {requester}")
+                            
+@app.on_message(
+    filters.command(["vend", f"vend@{BOT_USERNAME}"]) & filters.group
+)
+async def stop(Client, m: Message):
+    chat_id = m.chat.id
+    if chat_id in QUEUE:
+        try:
+            await call_py.leave_group_call(chat_id)
+            clear_queue(chat_id)
+            await m.reply("✅ **Streaming telah berakhir.**")
+        except Exception as e:
+            await m.reply(f"🚫 **Terjadi Kesalahan:**\n\n`{e}`")
+    else:
+        await m.reply("❌ **Tidak ada dalam streaming**")
+
 # Powered By Amay X Ahmad 2021
