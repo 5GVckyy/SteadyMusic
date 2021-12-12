@@ -12,7 +12,7 @@ from youtubesearchpython import VideosSearch
 
 from pytgcalls import idle
 from Yukki import (ASSID, ASSMENTION, ASSNAME, ASSUSERNAME, BOT_ID, BOT_NAME,
-                   BOT_USERNAME, SUDOERS, app, db, userbot, call_py)
+                   BOT_USERNAME, SUDOERS, app, db, userbot)
 from Yukki.Core.Logger.Log import (startup_delete_last, startup_edit_last,
                                    startup_send_new)
 from Yukki.Core.PyTgCalls.Yukki import run
@@ -20,6 +20,7 @@ from Yukki.Database import get_active_chats, get_sudoers, remove_active_chat
 from Yukki.Inline import private_panel
 from Yukki.Plugins import ALL_MODULES
 from Yukki.Utilities.inline import paginate_modules
+from Yukki.Core.Clients.cli import call_py
 
 loop = asyncio.get_event_loop()
 console = Console()
