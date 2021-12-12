@@ -112,13 +112,14 @@ async def initiate_bot():
         await userbot.join_chat("OfficialYukki")
     except:
         pass
+      
+    print("[INFO]: STARTING PYTGCALLS CLIENT")
+    await call_py.start()
+    await idle()
     console.print(f"\n┌[red] Bot Started as {BOT_NAME}!")
     console.print(f"├[green] ID :- {BOT_ID}!")
     console.print(f"├[red] Assistant Started as {ASSNAME}!")
     console.print(f"└[green] ID :- {ASSID}!")
-    
-    await call_py.start()
-    await idle()
     
     await run()
     console.print(f"\n[red]Stopping Bot")
