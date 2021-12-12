@@ -21,6 +21,7 @@ from Yukki.Plugins import ALL_MODULES
 from Yukki.Utilities.inline import paginate_modules
 from Yukki.Driver.amay import call_py, bot
 from pytgcalls import idle
+from Yukki.Core.Clients.cli import app, userbot
 
 loop = asyncio.get_event_loop()
 console = Console()
@@ -29,7 +30,7 @@ HELPABLE = {}
 
 async def initiate_bot():
     print("[INFO]: STARTING BOT CLIENT")
-    await bot.start()
+    await app.start()
     print("[INFO]: STARTING PYTGCALLS CLIENT")
     await call_py.start()
     await idle()
